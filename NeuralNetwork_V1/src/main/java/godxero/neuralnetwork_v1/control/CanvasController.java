@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 
 public class CanvasController {
 	@FXML
@@ -89,5 +90,9 @@ public class CanvasController {
 
 		final GraphicsContext ctx = drawCanvas.getGraphicsContext2D();
 		this.draw(ctx);
+	}
+
+	public void windowOnMouseMove (MouseEvent event) {
+		this.networkManager.updateMouse(event.getX(),event.getY());
 	}
 }

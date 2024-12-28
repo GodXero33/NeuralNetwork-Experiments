@@ -1,8 +1,6 @@
 package godxero.neuralnetwork_v1;
 
 import godxero.neuralnetwork_v1.control.CanvasController;
-import godxero.neuralnetwork_v1.module.NeuralNetwork;
-import godxero.neuralnetwork_v1.module.NeuralNetworkDraw;
 import godxero.neuralnetwork_v1.module.NeuralNetworkManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

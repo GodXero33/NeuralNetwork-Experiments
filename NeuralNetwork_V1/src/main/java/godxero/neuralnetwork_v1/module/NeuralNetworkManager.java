@@ -7,11 +7,15 @@ public class NeuralNetworkManager {
 	final private NeuralNetworkDraw drawer;
 
 	public NeuralNetworkManager () {
-		this.network = new NeuralNetwork(2, 3);
-		this.drawer = new NeuralNetworkDraw();
+		this.network = new NeuralNetwork(3, 3);
+		this.drawer = new NeuralNetworkDraw(this.network);
 	}
 
 	public void draw (GraphicsContext ctx, double width, double height) {
-		this.drawer.draw(ctx, this.network, width, height);
+		this.drawer.draw(ctx, width, height);
+	}
+
+	public void updateMouse (double x, double y) {
+		this.drawer.updateMouse(x, y);
 	}
 }
