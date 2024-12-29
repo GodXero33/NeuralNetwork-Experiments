@@ -23,6 +23,7 @@ public class NeuralNetworkDraw {
 		final double yOutputGap = height / outputSize;
 		final double yInputOffset = (yInputGap - size) * 0.5;
 		final double yOutputOffset = (yOutputGap - size) * 0.5;
+		final int inputSize_2 = inputSize * 2;
 
 		ctx.setFill(new Color(1.0, 0.0, 0.0, 1.0));
 		ctx.setStroke(new Color(0.0, 0.0, 0.0, 1.0));
@@ -36,10 +37,20 @@ public class NeuralNetworkDraw {
 
 		ctx.stroke();
 
-		for (int y = 0; y < inputSize; y++) ctx.fillRect(size - width * 0.5, y * yInputGap + yInputOffset - height * 0.5, size, size);
-		for (int y = 0; y < outputSize; y++) ctx.fillRect(width * 0.5 - size * 2, y * yOutputGap + yOutputOffset - height * 0.5, size, size);
+		final double[] nodes = new double[(inputSize + outputSize) * 2];
 
-		ctx.fillRect(this.mouse.getX() - width * 0.5, this.mouse.getY() - height * 0.5, 30, 30);
+		for (int a = 0; a < inputSize; a++) {
+			nodes[a * 2] = size - width * 0.5;
+			nodes[a * 2 + 1] = a * yInputGap + yInputOffset - height * 0.5;
+		}
+
+		for (int a = 0; a < outputSize; a++) {
+			nodes[inputSize_2 + a * 2] = width * 0.5 - size * 2;
+			nodes[inputSize_2 + a * 2 + 1] = a * yOutputGap + yOutputOffset - height * 0.5;
+		}
+
+		for (int y = 0; y < inputSize; y++) ctx.fillOval(nodes[y * 2], nodes[y * 2 + 1], size, size);
+		for (int y = 0; y < outputSize; y++) ctx.fillOval(nodes[inputSize_2 + y * 2], nodes[inputSize_2 + y * 2 + 1], size, size);
 	}
 
 	public void updateMouse (double x, double y) {
