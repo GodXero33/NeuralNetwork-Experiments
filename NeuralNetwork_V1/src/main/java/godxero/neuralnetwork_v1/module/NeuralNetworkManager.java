@@ -7,7 +7,7 @@ public class NeuralNetworkManager {
 	final private NeuralNetworkDraw drawer;
 
 	public NeuralNetworkManager () {
-		this.network = new NeuralNetwork(3, 3);
+		this.network = new NeuralNetwork(3, 5);
 		this.drawer = new NeuralNetworkDraw(this.network);
 	}
 
